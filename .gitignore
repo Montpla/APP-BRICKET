@@ -3,3 +3,10 @@ dist/
 *.log
 .DS_Store
 Thumbs.db
+package-lock.json
+electron-stderr*.txt
+electron-stdout.txt
+server.py
+test.html
+test-invoice-import.csv
+.claude/

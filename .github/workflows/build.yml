@@ -15,57 +15,60 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Build Windows
         run: npx electron-builder build --win --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WIN_CSC_LINK: ""
           WIN_CSC_KEY_PASSWORD: ""
+          ELECTRON_SKIP_BINARY_DOWNLOAD: "0"
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Windows
           path: dist/*.exe
+          if-no-files-found: warn
 
   build-mac:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Build Mac
         run: npx electron-builder build --mac --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
-          CSC_LINK: ""
-          CSC_KEY_PASSWORD: ""
+          ELECTRON_SKIP_BINARY_DOWNLOAD: "0"
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Mac
           path: dist/*.dmg
+          if-no-files-found: warn
 
   build-linux:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install Linux dependencies
+      - name: Install Linux build dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-0 libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+          sudo apt-get update -y
+          sudo apt-get install -y rpm libarchive-tools
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
       - name: Build Linux
-        run: npx electron-builder build --linux --x64
+        run: npx electron-builder build --linux AppImage --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Linux
           path: dist/*.AppImage
+          if-no-files-found: warn
