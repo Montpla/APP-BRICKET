@@ -16,10 +16,13 @@
       "output": "dist"
     },
     "files": [
-      "**/*",
-      "!node_modules/.cache",
-      "!dist",
-      "!*.md"
+      "index.html",
+      "main.js",
+      "js/**/*",
+      "css/**/*",
+      "img/**/*",
+      "vendor/**/*",
+      "data/**/*"
     ],
     "win": {
       "target": "nsis",

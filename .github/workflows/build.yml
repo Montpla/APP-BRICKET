@@ -14,15 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-      - name: Build Windows
-        run: npx electron-builder build --win --x64
+      - run: npm install --legacy-peer-deps
+      - run: npx electron-builder build --win --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WIN_CSC_LINK: ""
           WIN_CSC_KEY_PASSWORD: ""
-          ELECTRON_SKIP_BINARY_DOWNLOAD: "0"
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Windows
@@ -36,14 +33,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-      - name: Build Mac
-        run: npx electron-builder build --mac --x64
+      - run: npm install --legacy-peer-deps
+      - run: npx electron-builder build --mac --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_IDENTITY_AUTO_DISCOVERY: "false"
-          ELECTRON_SKIP_BINARY_DOWNLOAD: "0"
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Mac
@@ -57,14 +51,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install Linux build dependencies
-        run: |
-          sudo apt-get update -y
-          sudo apt-get install -y rpm libarchive-tools
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-      - name: Build Linux
-        run: npx electron-builder build --linux AppImage --x64
+      - run: npm install --legacy-peer-deps
+      - run: npx electron-builder build --linux AppImage --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
