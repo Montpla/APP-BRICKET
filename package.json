@@ -36,7 +36,7 @@
     },
     "mac": {
       "target": "dmg",
-      "icon": "img/icon.png",
+      "icon": "img/icon.icns",
       "category": "public.app-category.finance"
     },
     "linux": {
@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "electron": "^31.7.7",
-    "electron-builder": "^24.13.3"
+    "electron-builder": "^24.13.3",
+    "png2icons": "^2.0.1"
   }
 }
