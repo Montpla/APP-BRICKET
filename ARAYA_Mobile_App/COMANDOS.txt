@@ -1,0 +1,96 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      COMANDOS PRINCIPALES - PWA                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+📋 PRIMERO: Navega a la carpeta
+
+   cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 DESARROLLO (Primera vez)
+
+   npm install
+   (Instala dependencias)
+
+
+🚀 DESARROLLO (Después)
+
+   npm run dev
+   (Inicia servidor local en http://localhost:3000)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📦 COMPILAR PARA PRODUCCIÓN
+
+   npm run build
+   (Crea carpeta dist/ lista para publicar)
+
+
+📤 PUBLICAR EN VERCEL
+
+   Opción A (Drag & Drop):
+   ────────────────────────
+   1. npm run build
+   2. Ve a https://vercel.com/new
+   3. Arrastra carpeta dist/
+   4. ¡Publicada!
+
+   Opción B (GitHub):
+   ──────────────────
+   1. git push
+   2. Vercel auto-deploya
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 CICLO COMPLETO (Actualizar)
+
+   1. Edita código
+      src/main.ts
+      src/index.html
+
+   2. Compila
+      npm run build
+
+   3. Publica (si usas Vercel + GitHub)
+      git add .
+      git commit -m "Update"
+      git push
+
+   4. ¡Automático! Vercel deploya
+      Todos ven cambios al abrir la app
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 NOTAS ÚTILES
+
+   • npm run dev = Solo desarrollo local
+   • npm run build = Para publicar en servidor
+   • dist/ = Carpeta con la app compilada
+   • src/ = Tus archivos de código
+   • public/ = Assets estáticos
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🆘 PROBLEMAS
+
+   "npm: El término 'npm' no se reconoce"
+   → Instala Node.js desde https://nodejs.org
+   → REINICIA tu PC
+
+   npm install se queda pegado
+   → Presiona Ctrl+C
+   → Intenta de nuevo
+
+   npm run dev no funciona
+   → Verifica estar en la carpeta correcta
+   → npm install primero
+
+
+═════════════════════════════════════════════════════════════════════════════

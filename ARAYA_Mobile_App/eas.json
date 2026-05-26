@@ -1,0 +1,24 @@
+{
+  "build": {
+    "preview": {
+      "ios": {
+        "buildType": "simulator"
+      }
+    },
+    "production": {
+      "ios": {
+        "buildType": "archive"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "asciiProvider": "App Store Connect",
+        "appleId": "tu-email@example.com",
+        "appleTeamId": "TU_TEAM_ID",
+        "bundleIdentifier": "com.arayapuntacana.mobile"
+      }
+    }
+  }
+}

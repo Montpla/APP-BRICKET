@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "ARAYA Executive",
+    "slug": "araya-executive",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./public/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./public/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#07111f"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTabletMode": true,
+      "bundleIdentifier": "com.arayapuntacana.mobile",
+      "buildNumber": "1",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Esta app necesita acceso a tu ubicación para funcionar correctamente.",
+        "NSCameraUsageDescription": "Esta app necesita acceso a tu cámara.",
+        "NSPhotoLibraryUsageDescription": "Esta app necesita acceso a tu biblioteca de fotos."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./public/adaptive-icon.png",
+        "backgroundColor": "#07111f"
+      },
+      "package": "com.arayapuntacana.mobile",
+      "versionCode": 1
+    },
+    "web": {
+      "favicon": "./public/favicon.ico"
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "deploymentTarget": "14.0"
+          },
+          "android": {
+            "minSdkVersion": 31
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "YOUR_EAS_PROJECT_ID"
+      }
+    }
+  }
+}

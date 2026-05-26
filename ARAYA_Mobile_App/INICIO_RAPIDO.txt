@@ -1,0 +1,142 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   ARAYA MOBILE APP - INICIO RÁPIDO                          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Tu proyecto Capacitor está listo. Sigue estos pasos:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASO 1: INSTALAR NODE.JS (CRÍTICO)
+
+   1. Ve a: https://nodejs.org
+   2. Descarga: LTS (Long Term Support)
+   3. Ejecuta el instalador
+   4. Elige opciones por defecto
+   5. REINICIA tu PC cuando termine
+
+   Verificar instalación en PowerShell:
+   → node --version
+   → npm --version
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASO 2: INSTALAR DEPENDENCIAS
+
+   Abre PowerShell en esta carpeta (ARAYA_Mobile_App) y ejecuta:
+
+   cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+   npm install
+
+   ⏱️  Toma 5-10 minutos la primera vez
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASO 3: CONSTRUIR Y SINCRONIZAR
+
+   npm run build
+   npm run cap:sync
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 PARA ANDROID:
+
+   Opción A - Emulador (en tu PC):
+   ─────────────────────────────────
+   1. Instala Android Studio: https://developer.android.com/studio
+   2. Crea un emulador virtual en Android Studio
+   3. Ejecuta en PowerShell:
+      npm run cap:add:android
+      npm run cap:open:android
+   4. En Android Studio: Build > Build Bundle(s) / APK(s) > Build APK(s)
+
+   Opción B - Dispositivo físico:
+   ──────────────────────────────
+   1. Habilita "Modo de desarrollador" en tu teléfono
+      (Ajustes > Acerca de > Número de compilación x7)
+   2. Activa "Depuración USB" en Opciones de desarrollador
+   3. Conecta por USB a tu PC
+   4. Ejecuta:
+      npm run cap:add:android
+      npm run cap:open:android
+   5. En Android Studio: Click el botón Run (▶️)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🍎 PARA iOS (Solo en Mac):
+
+   1. Instala Xcode desde App Store
+   2. Instala CocoaPods:
+      sudo gem install cocoapods
+   3. Ejecuta:
+      npm run cap:add:ios
+      npm run cap:open:ios
+   4. En Xcode: Click Run (▶️)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📂 ESTRUCTURA DEL PROYECTO:
+
+   ARAYA_Mobile_App/
+   ├── src/
+   │   ├── index.html      ← UI de la app
+   │   ├── main.ts         ← Lógica JavaScript
+   │   └── api.ts          ← Conexión a APIs
+   ├── public/
+   │   └── manifest.json   ← Config PWA
+   ├── package.json        ← Dependencias
+   ├── capacitor.config.ts ← Config de Capacitor
+   ├── SETUP.md           ← Guía detallada (en español)
+   ├── README.md          ← Documentación técnica
+   └── INICIO_RAPIDO.txt  ← Este archivo
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 ACTUALIZAR LA APP (importante):
+
+   Cada vez que cambies código en src/index.html o src/main.ts:
+
+   npm run build
+   npm run cap:sync
+
+   Luego rebuild en Android Studio o Xcode.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 CONECTAR TUS DATOS REALES:
+
+   Por defecto, la app usa datos de prueba. Para conectar tu API:
+
+   1. Edita: src/main.ts
+   2. Reemplaza las constantes de datos
+   3. Usa la función syncData() para obtener datos de tu servidor
+   4. Rebuild: npm run build && npm run cap:sync
+
+   Ejemplo:
+   ─────────
+   async function loadData() {
+     const data = await fetch('https://tu-api.com/datos');
+     updateUI(data);
+   }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTOS:
+
+   • SETUP.md         → Guía paso a paso en español
+   • README.md        → Documentación técnica completa
+   • src/api.ts       → Ejemplos de cómo conectar APIs
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 SIGUIENTE:
+
+   1. Instala Node.js primero (PASO 1)
+   2. Abre PowerShell en esta carpeta
+   3. Ejecuta: npm install
+   4. Sigue SETUP.md para Android/iOS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+¿Preguntas? Revisa SETUP.md o README.md
+
+¡Éxito! 🎉

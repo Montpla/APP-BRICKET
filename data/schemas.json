@@ -1,0 +1,139 @@
+{
+  "projects": {
+    "description": "Proyectos de inversión",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "name": { "type": "string", "required": true, "minLength": 3, "maxLength": 255 },
+      "description": { "type": "string", "maxLength": 2000 },
+      "status": { "type": "enum", "enum": ["active", "archived", "completed"], "default": "active" },
+      "startDate": { "type": "date", "required": true },
+      "endDate": { "type": "date", "required": true },
+      "currency": { "type": "string", "default": "CLP" },
+      "budget": { "type": "number", "min": 0 },
+      "active": { "type": "boolean", "default": true },
+      "createdAt": { "type": "timestamp", "required": true },
+      "updatedAt": { "type": "timestamp" },
+      "config": { "type": "object" }
+    }
+  },
+
+  "chartOfAccounts": {
+    "description": "Plan de cuentas contable",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "code": { "type": "string", "required": true, "pattern": "^[0-9.]+$" },
+      "name": { "type": "string", "required": true, "minLength": 3, "maxLength": 255 },
+      "type": { "type": "enum", "enum": ["asset", "liability", "equity", "income", "expense"], "required": true },
+      "category": { "type": "string", "enum": ["bank", "construction", "sales", "admin", "other"] },
+      "parentAccountId": { "type": "uuid" },
+      "balance": { "type": "number", "default": 0 },
+      "currency": { "type": "string", "default": "CLP" },
+      "active": { "type": "boolean", "default": true },
+      "createdAt": { "type": "timestamp", "required": true },
+      "updatedAt": { "type": "timestamp" }
+    }
+  },
+
+  "journalEntries": {
+    "description": "Asientos contables",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "date": { "type": "date", "required": true, "indexed": true },
+      "description": { "type": "string", "required": true, "minLength": 3 },
+      "status": { "type": "enum", "enum": ["draft", "posted", "reversed"], "default": "draft" },
+      "lines": { "type": "array", "required": true, "minItems": 2 },
+      "notes": { "type": "string" },
+      "attachments": { "type": "array" },
+      "createdAt": { "type": "timestamp", "required": true },
+      "updatedAt": { "type": "timestamp" },
+      "createdBy": { "type": "string" },
+      "linkedInvoiceId": { "type": "uuid" }
+    }
+  },
+
+  "invoices": {
+    "description": "Facturas y recibos",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "number": { "type": "string", "required": true, "unique": true, "indexed": true },
+      "date": { "type": "date", "required": true },
+      "dueDate": { "type": "date", "required": true },
+      "client": { "type": "object", "required": true },
+      "lines": { "type": "array", "required": true, "minItems": 1 },
+      "subtotal": { "type": "number", "required": true, "min": 0 },
+      "discount": { "type": "number", "default": 0, "min": 0 },
+      "tax": { "type": "number", "required": true, "min": 0 },
+      "total": { "type": "number", "required": true, "min": 0 },
+      "status": { "type": "enum", "enum": ["draft", "sent", "paid", "overdue", "cancelled"], "default": "draft", "indexed": true },
+      "paymentMethod": { "type": "enum", "enum": ["bank", "cash", "check", "other"] },
+      "paymentDate": { "type": "date" },
+      "linkedJournalEntryId": { "type": "uuid" },
+      "notes": { "type": "string" },
+      "createdAt": { "type": "timestamp", "required": true },
+      "updatedAt": { "type": "timestamp" }
+    }
+  },
+
+  "imports": {
+    "description": "Historial de importaciones",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "filename": { "type": "string", "required": true },
+      "fileType": { "type": "enum", "enum": ["xlsx", "csv", "docx", "pptx", "pdf"], "required": true },
+      "dataType": { "type": "enum", "enum": ["budget", "expense", "income", "invoice", "chart"], "required": true },
+      "recordsImported": { "type": "number", "required": true, "min": 0 },
+      "recordsRejected": { "type": "number", "default": 0, "min": 0 },
+      "mapping": { "type": "object", "required": true },
+      "preview": { "type": "array" },
+      "status": { "type": "enum", "enum": ["pending", "confirmed", "error"], "default": "pending" },
+      "errorLog": { "type": "array" },
+      "createdAt": { "type": "timestamp", "required": true }
+    }
+  },
+
+  "budgetData": {
+    "description": "Datos de presupuesto dinámico",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "category": { "type": "string", "required": true },
+      "items": { "type": "array", "required": true },
+      "totalBudgeted": { "type": "number", "default": 0 },
+      "totalCommitted": { "type": "number", "default": 0 },
+      "totalPaid": { "type": "number", "default": 0 },
+      "currency": { "type": "string", "default": "CLP" },
+      "updatedAt": { "type": "timestamp" }
+    }
+  },
+
+  "expenseData": {
+    "description": "Datos de gastos mensuales",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "month": { "type": "date", "required": true },
+      "category": { "type": "string", "required": true },
+      "items": { "type": "array", "required": true },
+      "total": { "type": "number", "default": 0 },
+      "currency": { "type": "string", "default": "CLP" }
+    }
+  },
+
+  "salesData": {
+    "description": "Datos de ventas y proyecciones",
+    "fields": {
+      "id": { "type": "uuid", "required": true, "unique": true },
+      "projectId": { "type": "uuid", "required": true, "indexed": true },
+      "month": { "type": "date", "required": true },
+      "model": { "type": "string", "required": true },
+      "units": { "type": "number", "required": true, "min": 0 },
+      "totalSales": { "type": "number", "required": true, "min": 0 },
+      "forecast": { "type": "number", "min": 0 },
+      "currency": { "type": "string", "default": "CLP" }
+    }
+  }
+}

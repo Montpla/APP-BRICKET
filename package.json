@@ -1,0 +1,52 @@
+{
+  "name": "bricket-finanzas",
+  "version": "1.0.0",
+  "description": "Plataforma Financiera Bricket - Gestión de proyectos de construcción",
+  "author": "Bricket",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder build --win",
+    "build-all": "electron-builder build -mwl"
+  },
+  "build": {
+    "appId": "com.bricket.finanzas",
+    "productName": "Bricket Finanzas",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!node_modules/.cache",
+      "!dist",
+      "!*.md"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "img/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "img/icon.ico",
+      "installerHeaderIcon": "img/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Bricket Finanzas"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "img/icon.png",
+      "category": "public.app-category.finance"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "img/icon.png",
+      "category": "Finance"
+    }
+  },
+  "devDependencies": {
+    "electron": "^31.7.7",
+    "electron-builder": "^24.13.3"
+  }
+}

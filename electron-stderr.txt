@@ -1,0 +1,10 @@
+[3812:0526/155255.268:ERROR:cache_util_win.cc(20)] Unable to move the cache: Acceso denegado. (0x5)
+[3812:0526/155255.268:ERROR:cache_util_win.cc(20)] Unable to move the cache: Acceso denegado. (0x5)
+[3812:0526/155255.272:ERROR:cache_util_win.cc(20)] Unable to move the cache: Acceso denegado. (0x5)
+[3812:0526/155255.288:ERROR:disk_cache.cc(208)] Unable to create cache
+[3812:0526/155255.290:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[3812:0526/155255.292:ERROR:disk_cache.cc(208)] Unable to create cache
+[3812:0526/155255.292:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[3812:0526/155255.294:ERROR:disk_cache.cc(208)] Unable to create cache
+[3812:0526/155255.296:ERROR:gpu_disk_cache.cc(711)] Gpu Cache Creation failed: -2
+[3812:0526/155256.340:INFO:CONSOLE(23)] "🚀 ARAYA Loading...", source: file:///C:/Users/Usuario1/iCloudDrive/Proyecto%20Araya/Finanzas%20ARAYA/index.html (23)

@@ -1,0 +1,188 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║        ✅ PROYECTO CONFIGURADO PARA iOS CON EAS BUILD (Compilación Nube)    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 ¿POR QUÉ EAS BUILD?
+
+   ✨ Compila en la nube (servidores de Expo)
+   ✨ No necesitas Mac
+   ✨ No necesitas Xcode
+   ✨ Publica directo a App Store desde Windows
+   ✨ Simple y rápido
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📋 ARCHIVOS NUEVOS CREADOS
+
+   ✅ app.json              ← Configuración de la app para iOS
+   ✅ eas.json              ← Configuración de EAS Build
+   ✅ GUIA_EAS_IOS.md       ← Guía detallada (15 pasos)
+   ✅ EAS_RAPIDO.txt        ← Versión rápida
+   ✅ package.json          ← Actualizado con dependencias Expo
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 PRÓXIMO PASO: 12 COMANDOS (SÍ, SOLO 12!)
+
+   Abre PowerShell y ejecuta ESTO (en orden):
+
+
+   1️⃣  npm install -g eas-cli expo-cli
+       (Instala herramientas de Expo)
+
+
+   2️⃣  eas login
+       (Login en tu cuenta Expo - crea una gratis en https://expo.dev)
+
+
+   3️⃣  cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+       (Navega a la carpeta)
+
+
+   4️⃣  npm install
+       (Instala dependencias - toma 5-10 minutos)
+
+
+   5️⃣  npm run eas:build:ios
+       (Compila tu app en la nube - toma 10-20 minutos)
+       → Espera a que diga "✓ Build complete!"
+
+
+   6️⃣  Crea cuenta Apple Developer: https://developer.apple.com
+       (Paga $99 USD - necesario para publicar)
+
+
+   7️⃣  Encontra tu Team ID en https://developer.apple.com/account
+       (Copia el "Team ID" - son 10 caracteres)
+
+
+   8️⃣  Edita eas.json:
+       - Reemplaza "tu-email@example.com" con tu email Apple
+       - Reemplaza "TU_TEAM_ID" con tu Team ID
+
+
+   9️⃣  Crea contraseña de app: https://appleid.apple.com
+       (Security → App-Specific Passwords → Generate)
+       Copia la contraseña de 16 caracteres
+
+
+   🔟  npm run eas:submit:ios
+       (Publica en App Store)
+       Ingresa tu email Apple y la contraseña de 16 caracteres
+
+
+   1️⃣1️⃣ Espera revisión (1-3 días normalmente)
+       Apple revisa y publica automáticamente
+
+
+   1️⃣2️⃣ ¡Publicada en App Store! 🎉
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTACIÓN
+
+   Opción A (Rápido - 5 minutos):
+   → Lee: EAS_RAPIDO.txt
+
+   Opción B (Detallado - 20 minutos):
+   → Lee: GUIA_EAS_IOS.md
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⏱️  TIMELINE
+
+   Paso 1-4: 15-20 minutos (instalación)
+   Paso 5: 10-20 minutos (primera compilación)
+   Paso 6-9: 30 minutos (crear cuentas y credenciales)
+   Paso 10: 5 minutos (publicar)
+   Paso 11: 1-3 días (revisión Apple)
+
+   TOTAL: ~1.5 horas + revisión Apple
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 COSTOS (Una sola vez + anual)
+
+   Node.js              → Gratis
+   Expo Free Tier       → Gratis
+   Apple Developer      → $99 USD/año (REQUERIDO)
+   ---
+   TOTAL MÍNIMO: $99/año
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✨ VENTAJAS DE ESTE SETUP
+
+   ✅ Sin Mac requerida
+   ✅ Sin Xcode requerido
+   ✅ Compilación en la nube
+   ✅ Actualizaciones automáticas
+   ✅ Directamente a App Store
+   ✅ Monitoreo en tiempo real
+   ✅ Logs de errores detallados
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 AHORA MISMO:
+
+   Abre PowerShell y ejecuta:
+
+   npm install -g eas-cli expo-cli
+
+   Eso es TODO lo que necesitas hacer en este momento.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❓ PREGUNTAS FRECUENTES
+
+   P: ¿Necesito Mac?
+   R: NO. EAS Build compila en servidores de Expo.
+
+   P: ¿Qué es eas.json?
+   R: Tu configuración para compilar y publicar. Ya lo creamos.
+
+   P: ¿Qué es app.json?
+   R: Metadatos de tu app (nombre, versión, permisos iOS, etc.).
+
+   P: ¿Cuánto cuesta Expo?
+   R: Free tier es gratis. Pro es $99/mes (opcional).
+
+   P: ¿Cuánto cuesta Apple Developer?
+   R: $99 USD/año. Obligatorio para publicar en App Store.
+
+   P: ¿Cuánto tarda la compilación?
+   R: Primera vez: 15-20 minutos. Siguientes: más rápido.
+
+   P: ¿Cómo actualizo la app?
+   R: 1. Cambias código. 2. npm run eas:build:ios. 3. npm run eas:submit:ios.
+
+   P: ¿Dónde veo el progreso?
+   R: https://expo.dev (tu dashboard personal)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎉 TU APP ARAYA PRONTO ESTARÁ EN APP STORE
+
+   - Compilada desde Windows ✅
+   - En la nube ✅
+   - Sin Mac ✅
+   - Lista para usuarios ✅
+
+
+═══════════════════════════════════════════════════════════════════════════════
+
+                       Comienza aquí →  npm install -g eas-cli
+
+═══════════════════════════════════════════════════════════════════════════════

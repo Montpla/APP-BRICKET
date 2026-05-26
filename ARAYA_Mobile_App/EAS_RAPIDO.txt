@@ -1,0 +1,236 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                      COMPILAR Y PUBLICAR EN iOS CON EAS                     ║
+║                                                                              ║
+║                          (Sin Mac, desde Windows)                           ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+⏱️  TIEMPO TOTAL: ~1 hora (primera vez)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASO 1: INSTALAR NODE.JS (Si no lo hiciste)
+
+   1. https://nodejs.org → Descarga LTS
+   2. Ejecuta el instalador
+   3. REINICIA tu PC
+
+
+✅ PASO 2: INSTALAR EAS CLI Y EXPO CLI
+
+   Abre PowerShell y ejecuta:
+
+   npm install -g eas-cli expo-cli
+
+   Verifica:
+   eas --version
+   expo --version
+
+
+✅ PASO 3: CREAR CUENTA EXPO (Gratis)
+
+   1. Ve a https://expo.dev
+   2. Sign Up
+   3. Completa el formulario
+   4. Guarda tu USERNAME
+
+
+✅ PASO 4: INSTALAR DEPENDENCIAS
+
+   cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+   npm install
+
+
+✅ PASO 5: LOGIN EN EAS DESDE POWERSHELL
+
+   eas login
+
+   Ingresa:
+   - Tu email de Expo
+   - Tu contraseña
+   - Tu username
+
+   Verifica:
+   eas whoami
+
+
+✅ PASO 6: COMPILAR PARA iOS
+
+   npm run eas:build:ios
+
+   O manualmente:
+   eas build --platform ios --profile production
+
+   ⏱️  Toma 10-20 minutos (compila en servidores de Expo)
+
+   Verás:
+   → Building... (progreso)
+   → ✓ Build complete!
+   → .ipa ready to submit to App Store
+
+
+✅ PASO 7: CREAR CUENTA APPLE DEVELOPER (Pago)
+
+   1. Ve a https://developer.apple.com
+   2. Clic en "Account"
+   3. Sign In o Create
+   4. Paga: $99 USD (membresía anual)
+   5. Completa información personal/empresa
+
+
+✅ PASO 8: ENCONTRAR TU APPLE TEAM ID
+
+   1. Ve a https://developer.apple.com/account
+   2. Login
+   3. Clic en "Membership"
+   4. Copia tu "Team ID" (10 caracteres)
+
+
+✅ PASO 9: CONFIGURAR CREDENCIALES
+
+   Edita: eas.json
+
+   Reemplaza:
+   - "tu-email@example.com" → tu email Apple
+   - "TU_TEAM_ID" → Team ID de Apple
+
+
+✅ PASO 10: CREAR CONTRASEÑA DE APP (Apple)
+
+   1. Ve a https://appleid.apple.com
+   2. Login
+   3. Security
+   4. App-Specific Passwords → Generate
+   5. Selecciona:
+      - App: "Other (Custom)"
+      - Device: "Windows"
+   6. Copia la contraseña de 16 caracteres
+
+
+✅ PASO 11: PUBLICAR EN APP STORE
+
+   eas submit --platform ios --latest
+
+   O:
+   npm run eas:submit:ios
+
+   Ingresa:
+   - Tu email Apple
+   - La contraseña de APP que generaste (no tu contraseña normal)
+
+   ⏱️  Toma 2-5 minutos
+
+
+✅ PASO 12: ESPERAR REVISIÓN DE APPLE
+
+   Apple revisa tu app:
+   - Típicamente: 1-3 días
+   - Rara vez: hasta 1 semana
+
+   Recibirás emails en cada estado:
+   → "In Review"
+   → "Approved" (¡Publicada!)
+   → O "Rejected" (necesita cambios)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 PROBAR LA APP ANTES DE PUBLICAR
+
+   Si quieres probar sin publicar en App Store:
+
+   1. Compilar preview:
+      npm run eas:build:ios:preview
+
+   2. En https://expo.dev, busca el build
+   3. Haz clic en "Install"
+   4. Escanea el QR con tu iPhone
+   5. Se instala automáticamente
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 ACTUALIZAR LA APP DESPUÉS
+
+   1. Haz cambios en src/main.ts o src/index.html
+   2. Actualiza la versión en app.json:
+      "version": "1.0.1"
+   3. Compila nuevamente:
+      npm run eas:build:ios
+   4. Publica:
+      npm run eas:submit:ios
+   5. Apple lo revisa y actualiza
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 MONITOREAR COMPILACIONES
+
+   Abre: https://expo.dev
+
+   Verás:
+   - Estado en tiempo real
+   - Logs de compilación
+   - Descargar archivos
+   - Histórico de builds
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 COSTOS
+
+   Expo (Free Tier)      → Gratis (pero lento)
+   Expo (Pro)            → $99/mes
+   Apple Developer       → $99/año (REQUERIDO)
+   ---
+   Total mínimo: $99/año
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚠️  PROBLEMAS COMUNES
+
+   "eas not found"
+   → npm install -g eas-cli
+
+   "Not logged in"
+   → eas login
+   → eas whoami
+
+   "Build failed"
+   → Ve a https://expo.dev para ver logs
+   → O ejecuta: eas build --platform ios --profile production
+
+   "Apple ID invalid"
+   → Verifica que usaste contraseña de APP (no tu contraseña normal)
+   → Revisa la contraseña de 16 caracteres
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 DOCUMENTACIÓN COMPLETA
+
+   Lee: GUIA_EAS_IOS.md (mucho más detallado)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 RESUMEN RÁPIDO
+
+   1. npm install -g eas-cli expo-cli
+   2. eas login
+   3. npm install
+   4. npm run eas:build:ios
+   5. Crea Apple Developer Account ($99)
+   6. npm run eas:submit:ios
+   7. ¡Publicado en App Store! 🎉
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 COMIENZA: npm install -g eas-cli expo-cli
+
+═══════════════════════════════════════════════════════════════════════════════

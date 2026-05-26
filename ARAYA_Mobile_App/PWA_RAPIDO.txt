@@ -1,0 +1,203 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║            🚀 PWA PRIVADA - DISTRIBUIR A USUARIOS SELECCIONADOS             ║
+║                                                                              ║
+║                    Sin App Store, Sin Compilación Nativa                    ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+⏱️  TIEMPO TOTAL: ~30 minutos (primera vez)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ PASO 1: INSTALAR NODE.JS
+
+   1. https://nodejs.org → Descarga LTS
+   2. Ejecuta instalador
+   3. REINICIA tu PC
+
+   Verifica:
+   node --version
+   npm --version
+
+
+✅ PASO 2: INSTALAR DEPENDENCIAS
+
+   cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+   npm install
+
+
+✅ PASO 3: PROBAR LOCALMENTE
+
+   npm run dev
+
+   Abre en navegador: http://localhost:3000
+
+   ¿Ves el dashboard? ✓ Continúa.
+
+
+✅ PASO 4: COMPILAR PARA PRODUCCIÓN
+
+   npm run build
+
+   Se crea carpeta: dist/
+   (Esta carpeta se publica en el servidor)
+
+
+✅ PASO 5: CREAR CUENTA VERCEL (Gratis)
+
+   1. https://vercel.com
+   2. Sign up (puedes usar Google/GitHub)
+   3. Listo
+
+
+✅ PASO 6: DEPLOY EN VERCEL
+
+   Opción A (Fácil - Drag & Drop):
+   ────────────────────────────────
+   1. npm run build (si no lo hiciste)
+   2. Ve a https://vercel.com/new
+   3. Arrastra la carpeta dist/
+   4. Deploy automático
+   5. Tu app en: https://[nombre].vercel.app
+
+   Opción B (Automático - GitHub):
+   ───────────────────────────────
+   1. Sube código a GitHub
+   2. Ve a https://vercel.com
+   3. "Import Git Repository"
+   4. Selecciona tu repo
+   5. Deploy automático
+   6. Cada push = actualización automática
+
+
+✅ PASO 7: COMPARTIR CON USUARIOS
+
+   Copia el link: https://[nombre].vercel.app
+
+   Y envía a tus usuarios
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📱 USUARIO ABRE LA APP (iOS)
+
+   1. Abre el link en Safari
+   2. Toca: Compartir (↗️)
+   3. "Agregar a pantalla de inicio"
+   4. Tapa: "Agregar"
+   5. ¡App instalada! 🎉
+
+   Ahora aparece como app nativa en su iPhone
+
+
+📱 USUARIO ABRE LA APP (Android)
+
+   1. Abre el link en Chrome
+   2. Toca: Menú (⋮)
+   3. "Instalar app"
+   4. "Instalar"
+   5. ¡App instalada! 🎉
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔄 ACTUALIZAR LA APP
+
+   Todos los usuarios ven cambios automáticamente:
+
+   1. Edita: src/main.ts o src/index.html
+   2. npm run build
+   3. Vercel auto-deploya
+   4. Usuarios ven cambios al abrir la app
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔐 CONTRASEÑA PRIVADA (Opcional)
+
+   Si quieres que solo ingresen con contraseña:
+
+   Edita: src/index.html
+   Busca: <div id="app">
+   Antes de eso, agrega login:
+
+   <div id="login-screen">
+     <div style="padding: 40px; text-align: center;">
+       <h2>ARAYA Executive</h2>
+       <input type="password" id="pwd" placeholder="Contraseña">
+       <button onclick="checkPassword()">Ingresar</button>
+     </div>
+   </div>
+
+   En: src/main.ts, agrega:
+
+   function checkPassword() {
+     const pwd = document.getElementById('pwd').value;
+     if (pwd === 'TU-CONTRASEÑA') {
+       localStorage.setItem('auth', 'true');
+       document.getElementById('login-screen').style.display = 'none';
+     }
+   }
+
+   window.addEventListener('load', () => {
+     if (!localStorage.getItem('auth')) {
+       document.getElementById('app').style.display = 'none';
+     }
+   });
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 OPCIONES DE HOSTING (Todos gratis)
+
+   Vercel     → Recomendado (más fácil)
+   Netlify    → También muy bueno
+   Firebase   → Google (más control)
+   Tu servidor → Si tienes uno
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 VENTAJAS PWA PRIVADA
+
+   ✨ Sin App Store
+   ✨ Sin compilación
+   ✨ Actualizaciones automáticas
+   ✨ Un link para todos
+   ✨ Funciona offline
+   ✨ Dinámico - cambios en tiempo real
+   ✨ Gratis
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 RESUMEN RÁPIDO
+
+   1. npm install
+   2. npm run dev (prueba)
+   3. npm run build (compilar)
+   4. Vercel (drag & drop)
+   5. Compartir link
+   6. Usuarios instalan
+   7. ¡Listo! 🎉
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👉 COMIENZA AQUÍ:
+
+   Abre PowerShell:
+
+   cd "C:\Users\Usuario1\iCloudDrive\Proyecto Araya\Finanzas ARAYA\ARAYA_Mobile_App"
+   npm install
+   npm run dev
+
+   Abre: http://localhost:3000
+
+   ¡Eso es TODO para probar! 🚀
+
+
+═══════════════════════════════════════════════════════════════════════════════

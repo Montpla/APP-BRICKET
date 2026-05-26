@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#07111f">
+  <title>ARAYA - Plataforma Financiera</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/modules.css">
+
+  <script src="vendor/chart.umd.js"></script>
+  <script src="vendor/xlsx.full.min.js"></script>
+</head>
+
+<body style="background: #07111f !important; color: white;">
+  <noscript><p style="padding: 20px; color: red;">JavaScript is required for ARAYA to work.</p></noscript>
+  <script>
+    console.log('🚀 ARAYA Loading...');
+    // Test script - show that JS is running
+    window.jsRunning = true;
+    document.addEventListener('DOMContentLoaded', () => {
+      const statusEl = document.getElementById('debug-status');
+      if (statusEl) {
+        statusEl.textContent = '✓ JavaScript está corriendo. Esperando app.init()...';
+        statusEl.style.color = '#4caf50';
+      }
+    });
+  </script>
+
+  <style>
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .loading-spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(76, 175, 80, 0.3);
+      border-top: 3px solid #4caf50;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    .loading-container {
+      animation: fadeIn 0.5s ease-in;
+    }
+  </style>
+  <div class="app-container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="navbar-logo" style="color: #FF6B1D; font-weight: 900; font-size: 20px;">BRICKET</div>
+        <div class="navbar-project">
+          <span id="projectName">Cargando...</span>
+          <button id="btnProjectSelector" class="btn-icon" title="Cambiar proyecto">⚙️</button>
+        </div>
+      </div>
+
+      <div class="navbar-links">
+        <a href="#/" data-route="/" class="nav-link active">
+          <span class="icon">📊</span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a href="#/projects" data-route="/projects" class="nav-link">
+          <span class="icon">📁</span>
+          <span class="label">Proyectos</span>
+        </a>
+        <a href="#/import" data-route="/import" class="nav-link">
+          <span class="icon">📥</span>
+          <span class="label">Importar</span>
+        </a>
+        <a href="#/accounting" data-route="/accounting" class="nav-link">
+          <span class="icon">📋</span>
+          <span class="label">Contabilidad</span>
+        </a>
+        <a href="#/invoices" data-route="/invoices" class="nav-link">
+          <span class="icon">🧾</span>
+          <span class="label">Facturas</span>
+        </a>
+        <a href="#/reports" data-route="/reports" class="nav-link">
+          <span class="icon">📈</span>
+          <span class="label">Reportes</span>
+        </a>
+      </div>
+
+      <div class="navbar-actions">
+        <button id="btnTheme" class="btn-icon" title="Cambiar tema">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <select id="langSelector" class="lang-select" title="Idioma">
+          <option value="es">Español</option>
+          <option value="en">English</option>
+        </select>
+        <button id="btnMenu" class="btn-icon" title="Menú">☰</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app-content" class="app-content">
+      <div class="loading-container" style="display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; gap: 40px; background: linear-gradient(135deg, rgba(255, 107, 29, 0.05) 0%, rgba(255, 107, 29, 0) 100%);">
+        <!-- Bricket Logo -->
+        <div style="text-align: center; margin-bottom: 40px;">
+          <img src="img/bricket-logo.png" alt="Bricket" style="max-width: 500px; height: auto; display: block; margin: 0 auto;">
+        </div>
+
+        <!-- Dots animation instead of spinner -->
+        <div style="display: flex; gap: 8px; justify-content: center; align-items: center;">
+          <div style="width: 10px; height: 10px; background: #FF6B1D; border-radius: 50%; animation: pulse 1.5s ease-in-out infinite;"></div>
+          <div style="width: 10px; height: 10px; background: #FF6B1D; border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.3s;"></div>
+          <div style="width: 10px; height: 10px; background: #FF6B1D; border-radius: 50%; animation: pulse 1.5s ease-in-out infinite 0.6s;"></div>
+        </div>
+      </div>
+
+      <style>
+        @keyframes pulse {
+          0%, 100% { opacity: 0.3; transform: scale(0.8); }
+          50% { opacity: 1; transform: scale(1); }
+        }
+      </style>
+    </main>
+  </div>
+
+  <!-- Modal Container -->
+  <div id="modalContainer" class="modal-container" style="display:none;"></div>
+
+  <!-- Debug Panel -->
+  <div id="router-debug" style="display: none; position: fixed; bottom: 200px; right: 20px; background: rgba(0,0,0,0.9); color: #0f0; padding: 15px; border-radius: 8px; max-width: 400px; max-height: 300px; overflow-y: auto; font-size: 11px; font-family: monospace; z-index: 9999; border: 1px solid #0f0;"></div>
+
+  <!-- Debug Status Panel -->
+  <div id="debug-status" style="display: none; position: fixed; top: 200px; right: 20px; background: rgba(0,0,0,0.9); color: #FF6B1D; padding: 15px; border-radius: 8px; max-width: 400px; font-size: 13px; font-family: monospace; z-index: 9999; border: 1px solid #FF6B1D;">Inicializando...</div>
+
+  <!-- Scripts -->
+  <script src="js/db.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // Project selector button functionality (added after app.js loads the global app instance)
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnProjectSelector = document.getElementById('btnProjectSelector');
+      if (btnProjectSelector) {
+        btnProjectSelector.addEventListener('click', async () => {
+          const projects = await db.getAll('projects');
+          const projectList = projects
+            .map(p => `${p.id}: ${p.name}`)
+            .join('\n');
+
+          const newProjectId = prompt('Selecciona proyecto (escribe el ID):\n' + projectList);
+          if (newProjectId) {
+            const project = projects.find(p => p.id === newProjectId.trim());
+            if (project) {
+              await app.setActiveProject(project.id);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
