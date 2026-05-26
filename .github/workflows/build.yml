@@ -4,7 +4,7 @@ on:
   push:
     tags:
       - 'v*'
-  workflow_dispatch:  # Permite lanzar manualmente desde GitHub
+  workflow_dispatch:
 
 jobs:
   build-windows:
@@ -14,11 +14,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run build
+      - name: Install dependencies
+        run: npm install
+      - name: Build Windows
+        run: npx electron-builder build --win --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WIN_CSC_LINK: ""
+          WIN_CSC_KEY_PASSWORD: ""
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Windows
@@ -31,11 +34,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - run: npx electron-builder build --mac
+      - name: Install dependencies
+        run: npm install
+      - name: Build Mac
+        run: npx electron-builder build --mac --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CSC_IDENTITY_AUTO_DISCOVERY: "false"
+          CSC_LINK: ""
+          CSC_KEY_PASSWORD: ""
       - uses: actions/upload-artifact@v4
         with:
           name: Bricket-Finanzas-Mac
@@ -48,9 +55,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-      - run: npm ci
-      - run: npx electron-builder build --linux
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-0 libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      - name: Install dependencies
+        run: npm install
+      - name: Build Linux
+        run: npx electron-builder build --linux --x64
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v4
